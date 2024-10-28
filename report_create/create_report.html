@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="user">Email: </label><br>
+        <input type="email" name="user" id="user" required><br><br>
+        <label for="heading">Heading: </label><br>
+        <input type="text" name="heading" id="heading" required><br><br>
+        <label for="description">Description: </label><br>
+        <textarea name="description" id="description" rows="4" cols="50" required></textarea><br><br>
+        <label for="pdf_file"></label>
+        <input type="file" name="pdf_file" id="pdf_file" accept="application/pdf" required><br><br>
+        <button onclick="create_report(event)">Create Report</button>
+
+    </form>
+
+    <script src="create_report.js"></script>
+</body>
+</html>

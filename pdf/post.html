@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="file" id="pdfFile" accept="application/pdf" />
+    <button onclick="uploadPDF()">Upload</button>
+
+    <script>
+        function uploadPDF(){
+
+            var fileInput = document.getElementById('pdfFile');
+            var file = fileInput.files[0];
+            
+    
+            if(file){
+                var reader = new FileReader();
+                reader.readAsDataURL(file);
+                // console.log(reader);
+                reader.onload = function(){
+                    var base64pdf = reader.result;
+                    // console.log(base64pdf);
+                    fetch('http://localhost:3000/upload', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ pdf: base64pdf })
+                    }).then(reponse=>{
+                        console.log('succesfull')
+                    })
+                }
+            }else{
+                alert('select a file')
+            }
+        }
+    </script>
+</body>
+</html>

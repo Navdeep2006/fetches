@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="fetch_data()">get data</button>
+
+    <script>
+        function fetch_data(){
+            fetch('http://127.0.0.1:3000/get')
+            .then(response=>response.json())
+            .then(data=>{
+                console.log(data.pdf1);
+                // show_data(data.pdf1);
+            })
+        }
+
+        function show_data(pdfBase64){
+            const newWindow = window.open();
+                
+                // Create an iframe to display the PDF in the new tab
+                newWindow.document.write(`
+                    <iframe src="${pdfBase64}" 
+                    style="width: 100%; height: 100%;" 
+                    frameborder="0"></iframe>
+                `);
+        }
+    </script>
+</body>
+</html>

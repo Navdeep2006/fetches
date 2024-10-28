@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="image-container"></div>
+
+    <script>
+
+        fetch('http://127.0.0.1:3000/get')
+        .then(response => response.json())
+        .then(data=>{
+            console.log(data.image);
+            const photo= data.image;
+
+
+            const severImg = document.createElement('img');
+            severImg.src = photo;
+    
+            const container = document.getElementById('image-container');
+            container.appendChild(severImg);
+        }
+        );
+
+
+    </script>
+</body>
+</html>
